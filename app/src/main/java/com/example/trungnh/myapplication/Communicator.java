@@ -14,10 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class Communicator {
-    private static final String TAG = MainActivity.class.getSimpleName();
     private static final String URL = "https://tiensieunhan.xyz";
-    private static Retrofit retrofit = null;
-
     public void getData()
     {
 
@@ -32,8 +29,7 @@ public class Communicator {
         call.enqueue(new Callback<List<ServerResponse>>() {
             @Override
             public void onResponse(Call<List<ServerResponse>> call, Response<List<ServerResponse>> response) {
-
-                String serverResponse = response.body().get(0).getStt1();
+                List<ServerResponse> serverResponses = response.body();
             }
 
             @Override
