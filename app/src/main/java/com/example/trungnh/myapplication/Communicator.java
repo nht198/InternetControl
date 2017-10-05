@@ -33,6 +33,7 @@ public class Communicator {
             @Override
             public void onResponse(Call<List<ServerResponse>> call, Response<List<ServerResponse>> response) {
 
+                String serverResponse = response.body().get(0).getStt1();
             }
 
             @Override

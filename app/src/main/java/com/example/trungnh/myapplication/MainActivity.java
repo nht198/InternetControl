@@ -1,5 +1,6 @@
 package com.example.trungnh.myapplication;
 
+import android.app.Activity;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -19,15 +20,29 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends Activity{
 
     private static final String URL = "http://tiensieunhan.xyz";
+    Switch sw1_01,sw1_02,sw1_03,sw1_04,sw2_01,sw2_02,sw2_03,sw2_04;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Find ID
+        sw1_01 = (Switch)findViewById(R.id.sw1_01);
+        sw1_02 = (Switch)findViewById(R.id.sw1_02);
+        sw1_03 = (Switch)findViewById(R.id.sw1_03);
+        sw1_04 = (Switch)findViewById(R.id.sw1_04);
+        sw2_01 = (Switch)findViewById(R.id.sw2_01);
+        sw2_02 = (Switch)findViewById(R.id.sw2_02);
+        sw2_03 = (Switch)findViewById(R.id.sw2_03);
+        sw2_04 = (Switch)findViewById(R.id.sw2_04);
+        initSwitch();
         getData();
+
+
+
     }
 
     public void getData()
@@ -45,6 +60,8 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<List<ServerResponse>> call, Response<List<ServerResponse>> response) {
                 Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                boolean serverResponse = Boolean.valueOf(response.body().get(0).getStt1());
+                sw1_01.setChecked(serverResponse);
             }
 
             @Override
@@ -54,49 +71,47 @@ public class MainActivity extends AppCompatActivity{
         });
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void initSwitch()
+    {
         CompoundButton.OnCheckedChangeListener multilisteListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton v, boolean isChecked) {
                 switch (v.getId()) {
                     case R.id.sw1_01:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 1 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw1_02:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 2 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw1_03:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 3 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw1_04:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 4 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.sw2_01:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 1 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw2_02:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 2 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw2_03:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 3 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.sw2_04:
-                        Toast.makeText(getApplicationContext(),"button 1",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"button 4 " + isChecked,Toast.LENGTH_SHORT).show();
                         break;
-
                 }
             }
         };
-        ((Switch)findViewById(R.id.sw1_01)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw1_02)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw1_03)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw1_04)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw2_01)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw2_02)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw2_03)).setOnCheckedChangeListener(multilisteListener);
-        ((Switch)findViewById(R.id.sw2_04)).setOnCheckedChangeListener(multilisteListener);
+        sw1_01.setOnCheckedChangeListener(multilisteListener);
+        sw1_02.setOnCheckedChangeListener(multilisteListener);
+        sw1_03.setOnCheckedChangeListener(multilisteListener);
+        sw1_04.setOnCheckedChangeListener(multilisteListener);
+        sw2_01.setOnCheckedChangeListener(multilisteListener);
+        sw2_02.setOnCheckedChangeListener(multilisteListener);
+        sw2_03.setOnCheckedChangeListener(multilisteListener);
+        sw2_04.setOnCheckedChangeListener(multilisteListener);
     }
 }
