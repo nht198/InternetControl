@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="label_app">Điều khiển thiết bị qua Internet</string>
+</resources>

@@ -47,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
 
         Interface service = retrofit.create(Interface.class);
         Call<List<ServerResponse>> call = service.getServerResponse("E0001");
-        call.enqueue(new );
+        call.enqueue(new Callback<List<ServerResponse>>() {
+            @Override
+            public void onResponse(Call<List<ServerResponse>> call, Response<List<ServerResponse>> response) {
+                ServerResponse serverResponse = (ServerResponse) response.body();
+                Toast.makeText(MainActivity.this, "sucess", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<ServerResponse>> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
