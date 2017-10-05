@@ -1,11 +1,6 @@
 package com.example.trungnh.myapplication;
 
 
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.gson.Gson;
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,11 +20,25 @@ public class Communicator {
 
     public void getData()
     {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                                    .baseUrl(URL)
-                                    .addConverterFactory(GsonConverterFactory.create())
-                                    .build();
-        }
+
+        //The Retrofit builder will have the client attached, in order to get connection logs
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(URL)
+                .build();
+
+        Interface service = retrofit.create(Interface.class);
+        Call<List<ServerResponse>> call = service.getServerResponse("E0001");
+        call.enqueue(new Callback<List<ServerResponse>>() {
+            @Override
+            public void onResponse(Call<List<ServerResponse>> call, Response<List<ServerResponse>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<ServerResponse>> call, Throwable t) {
+
+            }
+        });
     }
 }

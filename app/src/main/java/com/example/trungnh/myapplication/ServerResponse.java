@@ -8,12 +8,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class ServerResponse {
     private String id;
-    private int stt1;
-    private int stt2;
-    private int stt3;
-    private int stt4;
+    private String stt1;
+    private String stt2;
+    private String stt3;
+    private String stt4;
 
-    public ServerResponse(String id, int stt1, int stt2, int stt3, int stt4) {
+    public ServerResponse(String id, String stt1, String stt2, String stt3, String stt4) {
         this.id = id;
         this.stt1 = stt1;
         this.stt2 = stt2;
@@ -25,39 +25,19 @@ public class ServerResponse {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public int getStt1() {
+    public String getStt1() {
         return stt1;
     }
 
-    public void setStt1(int stt1) {
-        this.stt1 = stt1;
-    }
-
-    public int getStt2() {
+    public String getStt2() {
         return stt2;
     }
 
-    public void setStt2(int stt2) {
-        this.stt2 = stt2;
-    }
-
-    public int getStt3() {
+    public String getStt3() {
         return stt3;
     }
 
-    public void setStt3(int stt3) {
-        this.stt3 = stt3;
-    }
-
-    public int getStt4() {
+    public String getStt4() {
         return stt4;
-    }
-
-    public void setStt4(int stt4) {
-        this.stt4 = stt4;
     }
 }
