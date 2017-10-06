@@ -20,7 +20,7 @@ public interface Interface {
 
     //This method is used for "POST"
     @POST("database.php")
-    Call<Void> postCall(@Field("id") String id,
-                                @Field("stt") String stt,
-                                @Field("value") int value);
+    Call<ResponseBody> postCall(@Field("id") String id,
+                        @Field("stt") String stt,
+                        @Field("value") int value);
 }

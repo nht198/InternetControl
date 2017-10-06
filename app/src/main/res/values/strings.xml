@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="label_app">Điều khiển thiết bị qua Internet</string>
+    <string name="maps_api_key"> AIzaSyBdrJ3VgE1nt58R203-KqdNr0oowU5mJis </string>
 </resources>
